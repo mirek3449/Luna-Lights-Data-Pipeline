@@ -1,25 +1,23 @@
 import pandas as pd
 import os
 
-# Шляхи
+# pth
 raw_path = 'data/raw'
 processed_path = 'data/processed'
 
 # Створити папку processed, якщо її нема
 os.makedirs(processed_path, exist_ok=True)
 
-# ---------- Читання CSV ----------
+# read
 sales = pd.read_csv(f'{raw_path}/sales.csv')
 customers = pd.read_csv(f'{raw_path}/customers.csv')
 products = pd.read_csv(f'{raw_path}/products.csv')
 
-# ---------- Очистка назв колонок ----------
+# clrr
 sales.columns = sales.columns.str.strip()
 customers.columns = customers.columns.str.strip()
 products.columns = products.columns.str.strip()
 
-# ---------- Видаляємо непотрібні колонки з sales перед merge ----------
-# щоб уникнути конфлікту unit_price
 sales = sales.drop(columns=['unit_price', 'total_price'], errors='ignore')
 
 # ---------- Об'єднання таблиць ----------
@@ -38,4 +36,4 @@ df['total_price'] = df['quantity'] * df['unit_price']
 # ---------- Збереження обробленого CSV ----------
 df.to_csv(f'{processed_path}/sales_clean.csv', index=False)
 
-print("✅ ETL завершено. Файл збережено у 'data/processed/sales_clean.csv'")
+print("✅ ETL is done. file firection: 'data/processed/sales_clean.csv'")
