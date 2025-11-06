@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+secrets.txt
+credentials.json
+
+# VSCode
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (не трекати великі набори)
+data/raw/
+data/processed/
+
+# Empty folder keepers
+!.gitkeep
